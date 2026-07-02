@@ -45,7 +45,7 @@ This repository houses the end-to-end automated credit card approval prediction 
 
 Navigate inside the development directory:
 ```bash
-cd "/home/david/credit_card_approval/5. Project Development Phase"
+cd "5. Project Development Phase"
 ```
 
 Activate the environment and start the web server:
