@@ -1,0 +1,9 @@
+- [x] Setup workspace and dependencies
+- [x] Create `train_models.py` (synthetic dataset, Logistic Regression, Decision Tree, Random Forest, XGBoost training)
+- [x] Run model training to verify training, save the best model and export metrics
+- [x] Create `app.py` (Flask backend serving predictions and metrics)
+- [x] Create `watson_pipeline.py` (IBM Watson Machine Learning deployment demo)
+- [x] Create frontend HTML (`templates/index.html`)
+- [x] Create CSS (`static/css/style.css`) with premium design
+- [x] Create JS (`static/js/main.js`) with dynamic interactive logic and mock client-side fallback
+- [x] Run verification tests and write walkthrough report
