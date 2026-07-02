@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanguard Credit Automation | AI Credit Card Approval Platform</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js for beautiful analytical graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="dark-theme">
+    <!-- Background glow elements for premium cybernetic/glassmorphic look -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-logo">
+                    <i class="fa-solid fa-shield-halved text-gradient-primary"></i>
+                </div>
+                <div class="brand-text">
+                    <h2>VANGUARD</h2>
+                    <span>CREDIT AUTOMATION</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-target="dashboard-tab">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Model Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-target="analyst-tab">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <span>Analyst Console</span>
+                </a>
+                <a href="#" class="nav-item" data-target="compliance-tab">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <span>Compliance Portal</span>
+                </a>
+                <a href="#" class="nav-item" data-target="customer-tab">
+                    <i class="fa-solid fa-user-check"></i>
+                    <span>Eligibility Check</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="server-status">
+                    <div class="status-indicator online" id="server-status-dot"></div>
+                    <span id="server-status-text">Connecting to Flask...</span>
+                </div>
+                <div class="model-badge">
+                    <i class="fa-solid fa-microchip"></i>
+                    <span id="active-model-badge">RF CLASSIFIER</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Workspace Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="app-header">
+                <div class="header-title">
+                    <h1 id="page-title">Model Dashboard</h1>
+                    <p id="page-subtitle">Real-time Credit Card Approval predictive modeling pipeline</p>
+                </div>
+                <div class="header-actions">
+                    <div class="workspace-info">
+                        <i class="fa-regular fa-folder-open"></i>
+                        <span>Workspace: /credit_card_approval</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area (Tabs) -->
+            <div class="tab-content">
+                
+                <!-- TAB 1: DASHBOARD -->
+                <section id="dashboard-tab" class="tab-pane active">
+                    <!-- KPI Metrics Grid -->
+                    <div class="kpi-grid">
+                        <div class="kpi-card">
+                            <div class="kpi-icon icon-blue">
+                                <i class="fa-solid fa-robot"></i>
+                            </div>
+                            <div class="kpi-info">
+                                <span class="kpi-label">Active Model</span>
+                                <h3 class="kpi-value" id="kpi-active-model">Random Forest</h3>
+                            </div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-icon icon-green">
+                                <i class="fa-solid fa-gauge-high"></i>
+                            </div>
+                            <div class="kpi-info">
+                                <span class="kpi-label">Target AUC-ROC</span>
+                                <h3 class="kpi-value" id="kpi-auc-roc">94.2%</h3>
+                            </div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-icon icon-purple">
+                                <i class="fa-solid fa-percent"></i>
+                            </div>
+                            <div class="kpi-info">
+                                <span class="kpi-label">Overall Accuracy</span>
+                                <h3 class="kpi-value" id="kpi-accuracy">89.8%</h3>
+                            </div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-icon icon-amber">
+                                <i class="fa-solid fa-database"></i>
+                            </div>
+                            <div class="kpi-info">
+                                <span class="kpi-label">Records Trained</span>
+                                <h3 class="kpi-value">2,500</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Main Dashboard Visualizations -->
+                    <div class="dashboard-grid">
+                        <!-- Model Performance Comparison Card -->
+                        <div class="card card-wide chart-container-card">
+                            <div class="card-header">
+                                <h3><i class="fa-solid fa-chart-bar text-primary"></i> Algorithm Performance Comparison</h3>
+                                <p>Evaluated on 4 key classification algorithms: Logistic Regression, Decision Tree, Random Forest, XGBoost</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-wrapper">
+                                    <canvas id="modelComparisonChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Watson Machine Learning Deployment Pipeline Status -->
+                        <div class="card watson-pipeline-card">
+                            <div class="card-header">
+                                <h3><i class="fa-solid fa-cloud-arrow-up text-indigo"></i> IBM Watson ML Deployment</h3>
+                                <p>Cloud hosting and deployment status pipeline</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="deployment-status-box">
+                                    <div class="cloud-nodes">
+                                        <div class="cloud-node local">
+                                            <i class="fa-solid fa-server"></i>
+                                            <span>Local Flask</span>
+                                            <div class="connector-line success"></div>
+                                        </div>
+                                        <div class="cloud-node cloud">
+                                            <i class="fa-solid fa-cloud-bolt text-indigo"></i>
+                                            <span>IBM Watson ML</span>
+                                            <div class="node-pulse anim-active"></div>
+                                        </div>
+                                    </div>
+                                    <div class="deployment-meta-list">
+                                        <div class="meta-row">
+                                            <span class="m-label">Endpoint URL:</span>
+                                            <span class="m-val truncate">https://us-south.ml.cloud.ibm.com/ml/v4/...</span>
+                                        </div>
+                                        <div class="meta-row">
+                                            <span class="m-label">Deployment Mode:</span>
+                                            <span class="m-val highlight">Online REST scoring API</span>
+                                        </div>
+                                        <div class="meta-row">
+                                            <span class="m-label">Status:</span>
+                                            <span class="m-val text-green"><i class="fa-solid fa-circle-check"></i> Connected / Active</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-outline btn-full" id="btn-trigger-watson-pipeline">
+                                        <i class="fa-solid fa-terminal"></i> Show Deployment Logs
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Metrics Table card -->
+                    <div class="card model-metrics-table-card">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-table"></i> Detailed Model Performance Comparison Matrix</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="custom-table" id="metrics-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Classification Model</th>
+                                            <th>Accuracy</th>
+                                            <th>Precision</th>
+                                            <th>Recall</th>
+                                            <th>F1-Score</th>
+                                            <th>ROC-AUC</th>
+                                            <th>Delinquency Code Support</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Will be populated dynamically -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB 2: CREDIT ANALYST CONSOLE (Scenario 1) -->
+                <section id="analyst-tab" class="tab-pane">
+                    <div class="interactive-split">
+                        <!-- Input Form Card -->
+                        <div class="card form-card">
+                            <div class="card-header">
+                                <h3><i class="fa-solid fa-user-edit text-primary"></i> Applicant Profile Entry</h3>
+                                <p>Enter the demographic and financial features of the applicant for ML scoring.</p>
+                            </div>
+                            <div class="card-body">
+                                <form id="analyst-form" class="grid-form">
+                                    <div class="form-group">
+                                        <label for="analyst-income-type">Income Type</label>
+                                        <select id="analyst-income-type" required>
+                                            <option value="Working" selected>Working</option>
+                                            <option value="Commercial associate">Commercial Associate</option>
+                                            <option value="State servant">State Servant</option>
+                                            <option value="Pensioner">Pensioner</option>
+                                            <option value="Student">Student</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="analyst-education-type">Education Level</label>
+                                        <select id="analyst-education-type" required>
+                                            <option value="Secondary / secondary special" selected>Secondary / Special</option>
+                                            <option value="Higher education">Higher Education</option>
+                                            <option value="Incomplete higher">Incomplete Higher</option>
+                                            <option value="Lower secondary">Lower Secondary</option>
+                                            <option value="Academic degree">Academic Degree</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="analyst-income">Annual Income ($)</label>
+                                        <input type="number" id="analyst-income" value="55000" min="5000" max="1000000" step="1000" required>
+                                        <div class="slider-container">
+                                            <input type="range" id="analyst-income-slider" min="10000" max="250000" step="5000" value="55000">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="analyst-employment">Employment Duration (Years)</label>
+                                        <input type="number" id="analyst-employment" value="4" min="0" max="50" step="0.5" required>
+                                        <div class="slider-container">
+                                            <input type="range" id="analyst-employment-slider" min="0" max="20" step="0.5" value="4">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="analyst-debt-ratio">Debt-to-Income Ratio (DTI)</label>
+                                        <input type="number" id="analyst-debt-ratio" value="0.25" min="0" max="1" step="0.01" required>
+                                        <div class="slider-container">
+                                            <input type="range" id="analyst-debt-ratio-slider" min="0.0" max="0.9" step="0.02" value="0.25">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="analyst-active-loans">Active Loan Count</label>
+                                        <select id="analyst-active-loans" required>
+                                            <option value="0">0 Active Loans</option>
+                                            <option value="1" selected>1 Active Loan</option>
+                                            <option value="2">2 Active Loans</option>
+                                            <option value="3">3 Active Loans</option>
+                                            <option value="4">4 Active Loans</option>
+                                            <option value="5">5+ Active Loans</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="analyst-inquiries">Recent Credit Inquiries (6 Months)</label>
+                                        <select id="analyst-inquiries" required>
+                                            <option value="0" selected>0 Inquiries</option>
+                                            <option value="1">1 Inquiry</option>
+                                            <option value="2">2 Inquiries</option>
+                                            <option value="3">3 Inquiries</option>
+                                            <option value="4">4 Inquiries</option>
+                                            <option value="5">5+ Inquiries</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="analyst-payment-status">Credit Payment Status (Delinquency)</label>
+                                        <select id="analyst-payment-status" required>
+                                            <option value="C" selected>C - Paid off / No debt this month</option>
+                                            <option value="X">X - No loan/credit activity this month</option>
+                                            <option value="0">0 - 1-29 days past due (Late)</option>
+                                            <option value="1">1 - 30-59 days past due</option>
+                                            <option value="2">2 - 60-89 days past due</option>
+                                            <option value="3">3 - 90-119 days past due</option>
+                                            <option value="4">4 - 120-149 days past due</option>
+                                            <option value="5">5 - 150+ days past due or write-off</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-span-2">
+                                        <div class="checkbox-row">
+                                            <label class="custom-checkbox">
+                                                <input type="checkbox" id="analyst-own-car">
+                                                <span class="checkmark"></span>
+                                                Owns Car
+                                            </label>
+                                            <label class="custom-checkbox">
+                                                <input type="checkbox" id="analyst-own-property" checked>
+                                                <span class="checkmark"></span>
+                                                Owns Home/Property
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-span-2 form-actions">
+                                        <button type="button" class="btn btn-outline" id="btn-load-sample-analyst">
+                                            <i class="fa-solid fa-redo"></i> Load Sample Applicant
+                                        </button>
+                                        <button type="submit" class="btn btn-primary" id="btn-submit-analyst">
+                                            <i class="fa-solid fa-circle-check"></i> Evaluate Application
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Results Card -->
+                        <div class="card result-card" id="analyst-result-card">
+                            <div class="result-placeholder" id="analyst-placeholder">
+                                <i class="fa-solid fa-robot"></i>
+                                <h3>Awaiting Applicant Evaluation</h3>
+                                <p>Fill out the profile entry form and click "Evaluate Application" to run predictive modeling scoring.</p>
+                            </div>
+                            <div class="result-details hidden" id="analyst-details">
+                                <div class="decision-header">
+                                    <div class="decision-badge" id="analyst-decision-badge">APPROVED</div>
+                                    <h4 id="analyst-decision-title">Applicant Approved</h4>
+                                    <p id="analyst-scoring-method">Scored by Best Model (Random Forest)</p>
+                                </div>
+
+                                <!-- Circular Approval Odds Indicator -->
+                                <div class="odds-visualization">
+                                    <div class="odds-circle">
+                                        <svg viewBox="0 0 100 100">
+                                            <circle cx="50" cy="50" r="45" class="circle-bg"></circle>
+                                            <circle cx="50" cy="50" r="45" class="circle-progress" id="analyst-circle-progress"></circle>
+                                        </svg>
+                                        <div class="odds-number">
+                                            <span id="analyst-odds-percent">88%</span>
+                                            <small>Approval Likelihood</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Feature contributions explanation -->
+                                <div class="contributions-section">
+                                    <h4>Scoring Explanation & Risk Factors</h4>
+                                    <div class="contributions-cols">
+                                        <div class="contrib-col pos">
+                                            <h5 class="text-green"><i class="fa-solid fa-circle-plus"></i> Positive Factors</h5>
+                                            <ul id="analyst-positives-list">
+                                                <!-- Dyn -->
+                                            </ul>
+                                        </div>
+                                        <div class="contrib-col neg">
+                                            <h5 class="text-red"><i class="fa-solid fa-circle-minus"></i> Risk Flags</h5>
+                                            <ul id="analyst-negatives-list">
+                                                <!-- Dyn -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Prediction History Table (Scenario 1 & Technical Architecture) -->
+                    <div class="card history-card" style="margin-top: 1.75rem;">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-clock-rotate-left text-primary"></i> Evaluation History Log</h3>
+                            <p>Recent predictions run during this active analyst session.</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="custom-table" id="analyst-history-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Timestamp</th>
+                                            <th>Income Type</th>
+                                            <th>Annual Income</th>
+                                            <th>Delinquency Code</th>
+                                            <th>Model Used</th>
+                                            <th>Score Odds</th>
+                                            <th>Recommendation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr id="history-empty-row">
+                                            <td colspan="7" class="text-center text-muted" style="padding: 2rem 0;">
+                                                <i class="fa-regular fa-folder-open" style="font-size: 1.5rem; display: block; margin-bottom: 0.5rem;"></i>
+                                                No evaluations logged in this session yet.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB 3: COMPLIANCE PORTAL (Scenario 2) -->
+                <section id="compliance-tab" class="tab-pane">
+                    <div class="card">
+                        <div class="card-header compliance-header">
+                            <div>
+                                <h3><i class="fa-solid fa-building-columns text-primary"></i> Batch Compliance Risk Screening</h3>
+                                <p>Screen customer lists with past-due loan records. The feature engineering pipeline automatically converts multi-class payment status codes into binary flags (`High_Risk`) for fast, compliant automated reject recommendations.</p>
+                            </div>
+                            <div class="compliance-actions">
+                                <button class="btn btn-outline" id="btn-load-compliance-sample">
+                                    <i class="fa-solid fa-file-csv"></i> Load Sample Applicant File
+                                </button>
+                                <button class="btn btn-primary" id="btn-run-compliance-screening" disabled>
+                                    <i class="fa-solid fa-filter"></i> Run Batch Compliance Scan
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <!-- Drag and drop simulator -->
+                            <div class="drag-drop-zone" id="compliance-drag-drop">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                <h3>Drag & Drop Compliance Applicant List</h3>
+                                <p>Supports CSV formatting. Features required: Income, Payment Status Codes (C, X, 0-5), Inquiries, DTI.</p>
+                                <span class="divider-text">OR</span>
+                                <button class="btn btn-outline" id="btn-simulate-upload">Browse Local Files</button>
+                            </div>
+
+                            <!-- Screened Results Table -->
+                            <div class="batch-results-container hidden" id="compliance-results-section">
+                                <div class="batch-summary-cards">
+                                    <div class="kpi-card mini">
+                                        <div class="kpi-icon icon-blue"><i class="fa-solid fa-users"></i></div>
+                                        <div class="kpi-info">
+                                            <span class="kpi-label">Batch Size</span>
+                                            <h3 class="kpi-value" id="batch-total-count">0</h3>
+                                        </div>
+                                    </div>
+                                    <div class="kpi-card mini">
+                                        <div class="kpi-icon icon-red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                                        <div class="kpi-info">
+                                            <span class="kpi-label">High-Risk Flagged</span>
+                                            <h3 class="kpi-value text-red" id="batch-high-risk-count">0</h3>
+                                        </div>
+                                    </div>
+                                    <div class="kpi-card mini">
+                                        <div class="kpi-icon icon-green"><i class="fa-solid fa-circle-check"></i></div>
+                                        <div class="kpi-info">
+                                            <span class="kpi-label">Auto-Approved</span>
+                                            <h3 class="kpi-value text-green" id="batch-approved-count">0</h3>
+                                        </div>
+                                    </div>
+                                    <div class="kpi-card mini">
+                                        <div class="kpi-icon icon-purple"><i class="fa-solid fa-percent"></i></div>
+                                        <div class="kpi-info">
+                                            <span class="kpi-label">Risk Flag Rate</span>
+                                            <h3 class="kpi-value" id="batch-risk-rate">0%</h3>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table class="custom-table" id="compliance-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Applicant ID</th>
+                                                <th>Name</th>
+                                                <th>Annual Income</th>
+                                                <th class="help-cell">
+                                                    Payment Status
+                                                    <i class="fa-solid fa-circle-info tooltipped" title="Codes: C=Paid, X=No activity, 0=Late (<30d), 1-5=30+ days overdue"></i>
+                                                </th>
+                                                <th class="help-cell">
+                                                    Compliance Flag
+                                                    <i class="fa-solid fa-circle-info tooltipped" title="Transformed to 1 (High Risk) for status codes 1,2,3,4,5"></i>
+                                                </th>
+                                                <th>ML Likelihood</th>
+                                                <th>Screening Decision</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Dynamically filled -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB 4: CUSTOMER SELF-SERVICE ELIGIBILITY CHECK (Scenario 4) -->
+                <section id="customer-tab" class="tab-pane">
+                    <div class="customer-wizard-container">
+                        <div class="wizard-header">
+                            <h3><i class="fa-solid fa-user-check text-primary"></i> Check Credit Card Eligibility</h3>
+                            <p>Verify your card pre-approval status before submitting a formal application. This runs a soft inquiry that will not affect your credit score.</p>
+                            
+                            <!-- Wizard Progress bar -->
+                            <div class="wizard-progress">
+                                <div class="progress-bar-fill" id="wizard-progress-bar"></div>
+                                <div class="progress-step active" data-step="1">
+                                    <div class="step-num">1</div>
+                                    <span class="step-title">Information</span>
+                                </div>
+                                <div class="progress-step" data-step="2">
+                                    <div class="step-num">2</div>
+                                    <span class="step-title">Financials</span>
+                                </div>
+                                <div class="progress-step" data-step="3">
+                                    <div class="step-num">3</div>
+                                    <span class="step-title">Evaluation</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- WIZARD STEP 1: Personal Details -->
+                        <div class="wizard-step-pane active" id="customer-step-1">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="grid-form">
+                                        <div class="form-group">
+                                            <label for="cust-name">Full Name</label>
+                                            <input type="text" id="cust-name" value="Jane Doe" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cust-age">Age (Years)</label>
+                                            <input type="number" id="cust-age" value="28" min="18" max="100" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cust-gender">Gender</label>
+                                            <select id="cust-gender">
+                                                <option value="1" selected>Female</option>
+                                                <option value="0">Male</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cust-education">Education Type</label>
+                                            <select id="cust-education">
+                                                <option value="Higher education" selected>Higher Education (Degree)</option>
+                                                <option value="Secondary / secondary special">Secondary / Special Education</option>
+                                                <option value="Incomplete higher">Incomplete Higher Education</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="wizard-actions">
+                                        <div></div>
+                                        <button class="btn btn-primary btn-next" data-next="2">
+                                            Continue <i class="fa-solid fa-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- WIZARD STEP 2: Financial Details -->
+                        <div class="wizard-step-pane" id="customer-step-2">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="grid-form">
+                                        <div class="form-group">
+                                            <label for="cust-income">Annual Income ($)</label>
+                                            <input type="number" id="cust-income" value="62000" min="5000" max="500000" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cust-employment">Employment Length (Years)</label>
+                                            <input type="number" id="cust-employment" value="3.5" min="0" max="50" step="0.5" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cust-debt">Monthly Debt Obligations ($)</label>
+                                            <input type="number" id="cust-debt" value="950" min="0" max="50000" required>
+                                            <small class="helper-txt">Loans, other cards, etc. (To compute DTI)</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cust-inquiries">Credit Checks (Last 6 Months)</label>
+                                            <select id="cust-inquiries">
+                                                <option value="0" selected>0 (No recent applications)</option>
+                                                <option value="1">1 inquiry</option>
+                                                <option value="2">2 inquiries</option>
+                                                <option value="3">3+ inquiries</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cust-payment-status">Have you had loan delays over 30 days in the last year?</label>
+                                            <select id="cust-payment-status">
+                                                <option value="C" selected>No - Never missed a payment</option>
+                                                <option value="0">Yes - Minor delays (under 30 days)</option>
+                                                <option value="1">Yes - Deluxe delays (30-60 days past due)</option>
+                                                <option value="3">Yes - Frequent severe delays (60+ days)</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Assets Ownership</label>
+                                            <div class="checkbox-row">
+                                                <label class="custom-checkbox">
+                                                    <input type="checkbox" id="cust-own-car">
+                                                    <span class="checkmark"></span>
+                                                    Own Car
+                                                </label>
+                                                <label class="custom-checkbox">
+                                                    <input type="checkbox" id="cust-own-prop" checked>
+                                                    <span class="checkmark"></span>
+                                                    Own Real Estate
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="wizard-actions">
+                                        <button class="btn btn-outline btn-prev" data-prev="1">
+                                            <i class="fa-solid fa-arrow-left"></i> Back
+                                        </button>
+                                        <button class="btn btn-primary" id="btn-submit-customer-wizard">
+                                            Check Eligibility <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- WIZARD STEP 3: Evaluation Results -->
+                        <div class="wizard-step-pane" id="customer-step-3">
+                            <div class="card customer-results-card">
+                                <div class="card-body">
+                                    <div class="cust-results-loading text-center" id="cust-loading">
+                                        <div class="spinner"></div>
+                                        <h3>Processing Application...</h3>
+                                        <p>Running multi-algorithm risk assessment models against your profile.</p>
+                                    </div>
+
+                                    <div class="cust-results-final hidden" id="cust-results-final">
+                                        <div class="result-grid">
+                                            <div class="results-visual">
+                                                <div class="decision-shield" id="customer-shield">
+                                                    <i class="fa-solid fa-shield-halved"></i>
+                                                </div>
+                                                <h2 id="customer-result-title">Excellent Pre-Approval Odds!</h2>
+                                                <div class="odds-bar-container">
+                                                    <div class="odds-bar-fill" id="customer-odds-bar"></div>
+                                                    <span id="customer-odds-label">Probability: 92%</span>
+                                                </div>
+                                            </div>
+                                            <div class="results-insights">
+                                                <h3>Personalized Approval Insights</h3>
+                                                <div class="insights-scroll" id="customer-insights-list">
+                                                    <!-- Dynamic insights -->
+                                                </div>
+
+                                                <!-- Call to Action -->
+                                                <div class="results-cta">
+                                                    <div class="cta-message" id="customer-cta-msg">
+                                                        Based on your score, you are highly eligible. You can proceed with a formal application.
+                                                    </div>
+                                                    <button class="btn btn-primary btn-full"><i class="fa-solid fa-file-contract"></i> Submit Formal Credit Application</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="wizard-actions">
+                                            <button class="btn btn-outline" id="btn-restart-customer">
+                                                <i class="fa-solid fa-rotate-left"></i> Run Another Check
+                                            </button>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Deployment Console Log Modal -->
+    <div class="modal-overlay" id="watson-logs-modal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-terminal text-indigo"></i> IBM Watson ML Deployment Logs</h3>
+                <button class="btn-close-modal" id="btn-close-logs-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <pre class="terminal-logs" id="terminal-logs-content">
+[STEP 1] Initializing WML API client using credentials...
+  -> Authenticating with apikey (APIKEY-****************)... SUCCESS.
+  -> Target space space-uuid-9f20c4-a128-48b2... CONNECTED.
+
+[STEP 2] Loading model artifact: 'best_model.pkl'...
+  -> Model detected: Random Forest Classifier
+  -> Input Features: 13 dimensional numerical & encoded categories
+
+[STEP 3] Registering model to IBM Watson Repository...
+  -> Exporting pickle bytes and formatting metadata...
+  -> Using software specification: 'runtime-23.1-py3.10'
+  -> Storing model in Watson ML service registry...
+  -> Saved model reference: Model-UID-cc78d10b-49ea-4cfb-b78c-02cf30a91f5a
+
+[STEP 4] Deploying model for online real-time inference...
+  -> Provisioning scoring container inside Watson runtime...
+  -> Generating REST API endpoint routing URL...
+  -> Deployment State: ACTIVE
+
+============================================================
+SUCCESS: MODEL DEPLOYED TO IBM WATSON ML CLOUD
+Deployment UID: deploy-9a28b10f-2cba-4e92-bc12-d85c1bf0ac24
+Scoring REST URL: https://us-south.ml.cloud.ibm.com/ml/v4/deployments/deploy-9a28b10f-2cba-4e92-bc12-d85c1bf0ac24/score?version=2024-03-01
+============================================================
+
+[STEP 5] Testing REST API scoring endpoint with a mock HTTP POST payload:
+  Post payload: {'input_data': [{'fields': [...], 'values': [[1, 32.0, 0, 1, 0, 65000, 0, 1, 4.5, 1, 0, 0.15, 0]]}]}
+  Scoring REST Response:
+  {
+    'predictions': [{
+      'fields': ['prediction', 'probability'],
+      'values': [[1, [0.12, 0.88]]]
+    }]
+  } -> Prediction: Approved (88.0% probability)
+                </pre>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="btn-copy-logs"><i class="fa-solid fa-copy"></i> Copy Logs</button>
+                <button class="btn btn-primary" id="btn-close-modal-bottom">Close Console</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom alert container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Script Logic -->
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
