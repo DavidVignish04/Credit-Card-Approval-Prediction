@@ -7,9 +7,10 @@ from flask import Flask, request, jsonify, render_template, send_from_directory
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 
-MODEL_PATH = '/home/david/credit_card_approval/5. Project Development Phase/model.pkl'
-PREPROCESSOR_PATH = '/home/david/credit_card_approval/5. Project Development Phase/preprocessor.pkl'
-METRICS_PATH = '/home/david/credit_card_approval/5. Project Development Phase/model_metrics.json'
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, 'model.pkl')
+PREPROCESSOR_PATH = os.path.join(BASE_DIR, 'preprocessor.pkl')
+METRICS_PATH = os.path.join(BASE_DIR, 'model_metrics.json')
 
 model = None
 preprocessor = None
